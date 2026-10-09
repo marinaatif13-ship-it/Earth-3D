@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Earth — Our Home Planet</title>
+<meta name="description" content="An interactive 3D journey across Earth: structure, atmosphere, water, climate and how to protect it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- 3D layer -->
+<canvas id="scene" aria-hidden="true"></canvas>
+<div class="flare" aria-hidden="true"></div>
+<div class="ice" id="ice" aria-hidden="true"></div>
+<div class="frame" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+<!-- Navigation -->
+<header class="nav-wrap">
+  <nav class="nav" aria-label="Main">
+    <a href="#home" class="nav-link" data-nav="home">Home</a>
+    <a href="#about" class="nav-link" data-nav="about">About</a>
+    <button class="nav-link nav-more" id="more-btn" aria-expanded="false" aria-controls="more-menu">More</button>
+  </nav>
+  <div class="more-menu" id="more-menu" hidden>
+    <a href="#facts">Facts of Earth</a>
+    <a href="#structure">Earth structure</a>
+    <a href="#tectonics">Tectonic plates</a>
+    <a href="#atmosphere">Atmosphere</a>
+    <a href="#water">Water cycle</a>
+    <a href="#layers">Atmosphere layers</a>
+    <a href="#climate">Climate &amp; ecosystem</a>
+    <a href="#space">Earth &amp; space</a>
+    <a href="#pollution">Climate change</a>
+    <a href="#conservation">Conservation</a>
+    <a href="#summary">Summary</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 1 · Hero -->
+  <section id="home" class="slide hero" data-nx=".78" data-ny="-.15" data-r="1.35" data-lon="-70" data-sun=".15,.4,1" data-flare="1" data-mx=".5" data-my="-1.1" data-mr="1.3">
+    <div class="drag-zone" data-drag></div>
+    <div class="hero-copy">
+      <h1><span class="h1-big">EARTH</span><span class="h1-sub">OUR HOME PLANET</span></h1>
+      <p class="lede">Drag the planet. Scroll to travel from its molten core to the edge of space.</p>
+    </div>
+    <div class="scroll-hint" aria-hidden="true"><span></span>Scroll</div>
+  </section>
+
+  <!-- 2 · Intro -->
+  <section id="about" class="slide split-right" data-nx="-.62" data-ny="-.2" data-r=".95" data-lon="20" data-sun="1,.4,.8" data-flare="0" data-mx="-2" data-my="1" data-mr=".01">
+    <div class="drag-zone left" data-drag></div>
+    <article class="glass panel">
+      <h2>Introduction to Earth</h2>
+      <p>Earth is the third planet from the Sun and the only place in the universe known to host life. Its surface is a living mosaic of oceans, continents, ice and cloud, shaped over billions of years.</p>
+      <p>A thin atmosphere, liquid water and a magnetic field work together to keep the temperature stable and shield every living thing from harsh radiation.</p>
+    </article>
+  </section>
+
+  <!-- 3 · Highlights -->
+  <section id="highlights" class="slide center" data-nx="-.15" data-ny="-2.95" data-r="2.7" data-lon="-30" data-sun="1,.2,-.15" data-flare="1" data-mx="-2" data-my="1" data-mr=".01">
+    <div class="trio">
+      <article class="glass card tilt"><div class="orb orb-sun"></div><h3>Earth is the third planet from the Sun</h3></article>
+      <article class="glass card tilt"><div class="orb orb-earth"></div><h3>The only known planet to support life</h3></article>
+      <article class="glass card tilt"><div class="orb orb-water"></div><h3>70% of the surface is covered in water</h3></article>
+    </div>
+    <p class="center-text">Light from the Sun takes about eight minutes to arrive. It warms the oceans, drives the weather and powers nearly every living system on the planet.</p>
+  </section>
+
+  <!-- 4 · Facts -->
+  <section id="facts" class="slide split-left" data-nx=".38" data-ny="0" data-r=".95" data-lon="165" data-sun="1.2,.2,.5" data-flare="1" data-mx=".97" data-my=".1" data-mr=".24">
+    <div class="drag-zone right" data-drag></div>
+    <article class="facts-copy">
+      <h2>Fact of Earth</h2>
+      <ul class="bullets">
+        <li>Diameter: <b data-count="12742" data-sep>12,742</b> km</li>
+        <li>Age: ~<b data-count="4.5" data-dec="1">4.5</b> billion years</li>
+        <li>Distance from Sun: ~<b data-count="149.6" data-dec="1">149.6</b> million km</li>
+        <li>Orbital period: <b data-count="365.25" data-dec="2">365.25</b> days</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- 5 · Structure -->
+  <section id="structure" class="slide stack-left" data-nx=".52" data-ny="-.2" data-r="1.25" data-lon="60" data-sun=".9,.25,-.6" data-flare="0" data-mx="-2" data-my="1" data-mr=".01" data-dim=".55">
+    <h2>Earth Structure</h2>
+    <div class="layers4">
+      <article class="layer tilt"><svg class="slab" viewBox="0 0 130 100" aria-hidden="true"><path d="M8 52 L62 78 L122 50 L122 66 L62 96 L8 70Z" fill="#5a2a1c"/><path d="M8 52 L8 70 L62 96 L62 78Z" fill="#7a3a22"/><path d="M62 78 L122 50 L122 38 L62 66 L8 40 L8 52Z" fill="#3d6fd1"/><path d="M8 40 L40 14 L70 20 L122 38 L62 66Z" fill="#59a5a1"/><path d="M62 66 L122 38 L122 50 L62 78Z" fill="#2f58b5"/><path d="M28 36q8-6 16-2M60 46q10 3 18-4" stroke="#143a46" fill="none" stroke-width="1.6"/></svg><h3>Crust</h3><p>Thin, outermost layer</p></article>
+      <article class="layer tilt"><svg class="slab" viewBox="0 0 130 100" aria-hidden="true"><path d="M8 48 L62 76 L122 46 L122 62 L62 92 L8 64Z" fill="#c26a05"/><path d="M8 34 L44 12 L74 18 L122 34 L62 62Z" fill="#ff9d0a"/><path d="M8 34 L8 64 L62 92 L62 62Z" fill="#e58106"/><path d="M62 62 L122 34 L122 62 L62 92Z" fill="#f08a05"/><path d="M30 34q10-8 18 0t16 4M70 42q8-6 20 2" stroke="#d97806" fill="none" stroke-width="5" stroke-linecap="round"/></svg><h3>Mantle</h3><p>Thick, semi-solid layer</p></article>
+      <article class="layer tilt"><svg class="slab" viewBox="0 0 130 100" aria-hidden="true"><path d="M8 34 L44 12 L74 18 L122 34 L62 62Z" fill="#ff4a0a"/><path d="M8 34 L8 64 L62 92 L62 62Z" fill="#e63a05"/><path d="M62 62 L122 34 L122 62 L62 92Z" fill="#f04309"/><path d="M20 36q14 8 26 0t24 6M40 28q12 6 24 0t22 4" stroke="#ffa14a" fill="none" stroke-width="2.2" stroke-linecap="round"/></svg><h3>Outer Core</h3><p>Liquid iron and nickel</p></article>
+      <article class="layer tilt"><svg class="slab" viewBox="0 0 130 100" aria-hidden="true"><path d="M8 34 L44 12 L74 18 L122 34 L62 62Z" fill="#ffc40d"/><path d="M8 34 L8 64 L62 92 L62 62Z" fill="#f2b100"/><path d="M62 62 L122 34 L122 62 L62 92Z" fill="#f8bb06"/><path d="M26 34q8-10 18-4t4 10M64 40q10-8 20-2" stroke="#ffe08a" fill="none" stroke-width="6" stroke-linecap="round"/></svg><h3>Inner Core</h3><p>Solid iron and nickel</p></article>
+    </div>
+  </section>
+
+  <!-- 6 · Tectonics -->
+  <section id="tectonics" class="slide split-right wide" data-nx="2.4" data-ny="-.2" data-r="1.4" data-lon="100" data-sun="1,.3,.7" data-flare="0" data-fx="lava" data-mx="-2" data-my="1" data-mr=".01">
+    <article class="panel plain">
+      <h2>Tectonic Plates<br>and Movements</h2>
+      <h3>Earth's crust is divided into plates</h3>
+      <p>Seven major plates and many smaller ones float on the semi-molten mantle, drifting a few centimetres every year — about as fast as fingernails grow.</p>
+      <h3>Causes earthquakes, mountains &amp; volcanoes</h3>
+      <p>Where plates collide, slide past or pull apart, pressure builds and releases. That is how the Himalayas rose, how the Pacific “Ring of Fire” formed, and why the ground shakes.</p>
+    </article>
+  </section>
+
+  <!-- 7 · Atmosphere stats -->
+  <section id="atmosphere" class="slide stats" data-nx="-.05" data-ny="0" data-r=".78" data-lon="-60" data-sun="-.4,.5,.8" data-flare="1" data-nebula="1" data-mx="-2" data-my="1" data-mr=".01">
+    <h2 class="stats-title">Earth’s<br>Atmosphere</h2>
+    <div class="stat-col">
+      <article class="glass stat tilt"><b class="num"><span data-count="78">78</span>%</b><span>Nitrogen</span></article>
+      <article class="glass stat tilt"><b class="num"><span data-count="21">21</span>%</b><span>Oxygen</span></article>
+      <article class="glass stat tilt"><b class="num"><span data-count="1">1</span>%</b><span>Other gases</span></article>
+    </div>
+  </section>
+
+  <!-- 8 · Water cycle -->
+  <section id="water" class="slide water" data-nx="2.4" data-ny="-.2" data-r="1.4" data-lon="0" data-sun="1,.3,.7" data-flare="0" data-fx="ocean" data-mx="-2" data-my="1" data-mr=".01">
+    <div class="water-grid">
+      <div class="wave-panel" aria-hidden="true">
+        <svg preserveAspectRatio="none"><defs>
+          <filter id="foam" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.016 0.05" numOctaves="5" seed="7"><animate attributeName="baseFrequency" dur="44s" values="0.016 0.05;0.022 0.062;0.016 0.05" repeatCount="indefinite"/></feTurbulence><feColorMatrix type="matrix" values="0 0 0 0 .92  0 0 0 0 .96  0 0 0 0 1  0 0 0 15 -8.7"/></filter>
+          <filter id="swell" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.006 0.014" numOctaves="3" seed="2"><animate attributeName="baseFrequency" dur="60s" values="0.006 0.014;0.01 0.02;0.006 0.014" repeatCount="indefinite"/></feTurbulence><feColorMatrix type="matrix" values="0 0 0 0 .1  0 0 0 0 .22  0 0 0 0 .34  0 0 0 1.6 -.5"/></filter>
+        </defs><rect width="100%" height="100%" fill="#050a10"/><rect width="100%" height="100%" filter="url(#swell)"/><rect width="100%" height="100%" filter="url(#foam)" opacity=".92"/></svg>
+      </div>
+      <article class="glass panel water-panel">
+        <h2>The Water Cycle</h2>
+        <div class="cycle">
+          <div><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 26V8m-6 7 6-8 6 8zM42 26V8m-6 7 6-8 6 8z" fill="#fff"/><path d="M6 36q6-5 12 0t12 0 12 0 12 0M6 44q6-5 12 0t12 0 12 0 12 0M6 52q6-5 12 0t12 0 12 0 12 0" stroke="#fff" fill="none" stroke-width="2"/></svg><h3>Evaporation</h3><p>Water rises</p></div>
+          <div><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 46a10 10 0 0 1 2-19 12 12 0 0 1 22-5 11 11 0 0 1 14 12 8 8 0 0 1-2 12z" fill="#fff"/></svg><h3>Condensation</h3><p>Clouds form</p></div>
+          <div><svg viewBox="0 0 64 64" aria-hidden="true"><g stroke="#fff" stroke-width="4" stroke-linecap="round"><path d="M32 6v52M10 19l44 26M10 45l44-26"/></g><g stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M26 10l6 6 6-6M26 54l6-6 6 6M8 26l8 2-2 8M56 38l-8-2 2-8M8 38l8-2-2-8M56 26l-8 2 2 8"/></g></svg><h3>Precipitation</h3><p>Rain, snow, hail</p></div>
+          <div><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M6 24q14-10 26 0t26-4M6 32q14-10 26 0t26-4M6 40q14-10 26 0t26-4M6 48q14-10 26 0t26-4" stroke="#fff" fill="none" stroke-width="2" stroke-linecap="round"/></svg><h3>Collection</h3><p>Water returns to oceans, rivers</p></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 9 · Atmosphere layers -->
+  <section id="layers" class="slide layers-slide" data-nx="0" data-ny="-2.9" data-r="2.7" data-lon="-30" data-sun="1,.3,-.2" data-flare="1" data-mx="-2" data-my="1" data-mr=".01">
+    <h2 class="center-title">Earth’s Atmosphere</h2>
+    <ol class="five">
+      <li><span class="ring">1</span><h3>Troposphere</h3><p>Weather occurs here</p></li>
+      <li><span class="ring">2</span><h3>Stratosphere</h3><p>Ozone layer</p></li>
+      <li><span class="ring">3</span><h3>Mesosphere</h3><p>Meteors burn up</p></li>
+      <li><span class="ring">4</span><h3>Thermosphere</h3><p>Aurora occurs</p></li>
+      <li><span class="ring">5</span><h3>Exosphere</h3><p>Outer edge</p></li>
+    </ol>
+  </section>
+
+  <!-- 10 · Climate -->
+  <section id="climate" class="slide center" data-nx="2.4" data-ny="-.2" data-r="1.4" data-lon="0" data-sun="1,.3,.7" data-flare="0" data-fx="aurora" data-mx="-2" data-my="1" data-mr=".01">
+    <h2 class="center-title">Earth’s Climate and Ecosystem</h2>
+    <div class="duo">
+      <article class="glass card-wide tilt"><h3>Climate Zones</h3><ul><li>Tropical – Warm, humid (Rainforest)</li><li>Temperate – Moderate temperature (Forests, Grasslands)</li><li>Polar – Cold, icy (Tundra, Ice Caps)</li></ul></article>
+      <article class="glass card-wide tilt"><h3>Biodiversity &amp; Ecosystems</h3><ul><li>Different habitats support diverse life</li><li>Forests, Oceans, Deserts, Grasslands</li><li>Importance of balance in nature</li></ul></article>
+    </div>
+  </section>
+
+  <!-- 11 · Space -->
+  <section id="space" class="slide space" data-nx="-.6" data-ny="0" data-r=".9" data-lon="0" data-sun="1,.1,.3" data-flare="0" data-planets="1" data-mx="-.12" data-my=".15" data-mr=".1">
+    <div class="drag-zone left" data-drag></div>
+    <div class="space-copy">
+      <h2>Earth and Space</h2>
+      <dl>
+        <div><dt>Rotation</dt><dd>24 hours (causes day &amp; night)</dd></div>
+        <div><dt>Revolution</dt><dd>365 days (causes seasons)</dd></div>
+      </dl>
+      <p>Earth spins on a tilted axis while it circles the Sun. That tilt, not distance, is why we have seasons — and the Moon’s pull gives us the tides.</p>
+    </div>
+  </section>
+
+  <!-- 12 · Pollution -->
+  <section id="pollution" class="slide pollution" data-nx="2.4" data-ny="-.2" data-r="1.4" data-lon="0" data-sun="1,.3,.7" data-flare="0" data-ice="1" data-mx="-2" data-my="1" data-mr=".01">
+    <div class="pol-left">
+      <h2>Climate Change<br>and Pollution</h2>
+      <p>Burning fossil fuels, clearing forests and dumping waste are changing the balance of air, land and water faster than natural systems can adapt.</p>
+    </div>
+    <div class="pol-right">
+      <article class="glass row tilt"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="28" cy="34" r="22" fill="none" stroke="#fff" stroke-width="3"/><path d="M14 26q8-8 14 0t4 12-12 6" fill="none" stroke="#fff" stroke-width="3"/><rect x="46" y="8" width="10" height="34" rx="5" fill="#0b0f12" stroke="#fff" stroke-width="3"/><circle cx="51" cy="48" r="8" fill="#0b0f12" stroke="#fff" stroke-width="3"/><path d="M51 20v28" stroke="#fff" stroke-width="3"/></svg><div><h3>Global warming</h3><p>Rising temperatures melt ice and raise sea levels.</p></div></article>
+      <article class="glass row tilt"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 50a14 14 0 0 1 0-28 16 16 0 0 1 30-4 14 14 0 0 1 2 32z" fill="none" stroke="#fff" stroke-width="3"/><text x="32" y="40" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="700" font-size="15" fill="#fff">CO₂</text></svg><div><h3>Air and water pollution</h3><p>Smoke, plastics and chemicals harm health and habitats.</p></div></article>
+      <article class="glass row tilt"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="34" cy="16" r="10" fill="none" stroke="#fff" stroke-width="3"/><circle cx="24" cy="26" r="9" fill="none" stroke="#fff" stroke-width="3"/><circle cx="44" cy="26" r="9" fill="none" stroke="#fff" stroke-width="3"/><path d="M34 34v14M14 56h40M18 50h28" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><div><h3>Deforestation</h3><p>Fewer trees means less oxygen and less stored carbon.</p></div></article>
+    </div>
+  </section>
+
+  <!-- 13 · Conservation -->
+  <section id="conservation" class="slide conserve" data-nx="0" data-ny="-3.1" data-r="2.9" data-lon="-10" data-sun="1,.3,-.2" data-flare="0" data-mx="-2" data-my="1" data-mr=".01">
+    <h2 class="center-title">Conservation &amp; Sustainability</h2>
+    <div class="recycle-wrap">
+      <article class="rc rc-l"><h3>Reduce</h3><p>Use less energy, water and packaging.</p></article>
+      <svg class="recycle" viewBox="0 0 200 200" aria-label="Recycling symbol" role="img"><g id="arrow"><line x1="112" y1="45" x2="150" y2="111" stroke="#fff" stroke-width="16" stroke-linecap="round"/><polygon points="165,137 166,101 134,120" fill="#fff" stroke="#fff" stroke-width="4" stroke-linejoin="round"/></g><use href="#arrow" transform="rotate(120 100 105.3)"/><use href="#arrow" transform="rotate(240 100 105.3)"/></svg>
+      <article class="rc rc-r"><h3>Recycle</h3><p>Turn old materials into new products.</p></article>
+      <article class="rc rc-b"><h3>Reuse</h3><p>Repair, share and give things a second life.</p></article>
+    </div>
+  </section>
+
+  <!-- 14 · Summary -->
+  <section id="summary" class="slide center summary" data-nx="0" data-ny="-2.1" data-r="2.5" data-lon="-60" data-sun="-.5,.4,.3" data-flare="0" data-mx="-2" data-my="1" data-mr=".01">
+    <h2 class="center-title">Summary of Key Points</h2>
+    <div class="glass sum-box">
+      <p>Earth is a small, living planet: a molten core, a moving crust, a thin protective atmosphere and a water cycle that connects every ocean, cloud and river.</p>
+      <p>Its balance is fragile. Cutting pollution, protecting ecosystems and using resources wisely keeps this home habitable for everyone who comes next.</p>
+    </div>
+  </section>
+
+  <!-- 15 · Thank you -->
+  <section id="thanks" class="slide thanks" data-nx=".78" data-ny="-.15" data-r="1.35" data-lon="-70" data-sun=".15,.4,1" data-flare="1" data-mx=".5" data-my="-1.1" data-mr="1.3">
+    <div class="drag-zone" data-drag></div>
+    <div class="hero-copy">
+      <h2 class="thank">THANK<br>YOU.</h2>
+      <p class="url">www.reallygreatsite.com</p>
+      <a href="#home" class="back-top">Back to the start</a>
+    </div>
+  </section>
+</main>
+
+<script src="libs/three.min.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
